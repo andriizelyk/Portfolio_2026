@@ -1,0 +1,44 @@
+.navbar__toolbar {
+  padding-block: 0.5rem;
+}
+
+.navbar__logo {
+  font-weight: 800;
+  letter-spacing: 0.0625rem;
+  flex-grow: 1;
+  padding-right: 0.9375rem;
+}
+.navbar__logo-accent {
+  color: var(--color-primary);
+}
+
+.navbar__links {
+  display: flex;
+  gap: 0.25rem;
+  margin-right: 1rem;
+}
+.navbar__links a {
+  font-weight: 600;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar__drawer {
+  width: 13.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.navbar__drawer-link {
+  justify-content: flex-start !important;
+}
+.navbar__drawer-socials {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}

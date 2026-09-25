@@ -1,0 +1,42 @@
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  .projects-grid {
+    flex-direction: row;
+  }
+}
+
+.project-card {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.project-card__header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-card__title {
+  font-weight: 700;
+}
+
+.project-card__company {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.project-card__description {
+  margin-bottom: 1.25rem;
+}
+
+.project-card__tags {
+  margin-bottom: 1.25rem;
+}
+
+.project-card__cta {
+  padding-inline: 0 !important;
+}

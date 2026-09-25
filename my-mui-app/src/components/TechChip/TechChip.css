@@ -1,0 +1,24 @@
+.tech-chip {
+  border-color: rgba(var(--tech-color-rgb), 0.4) !important;
+  background-color: rgba(var(--tech-color-rgb), 0.12) !important;
+  color: var(--tech-color) !important;
+  font-weight: 600;
+}
+
+.tech-chip--small {
+  height: 1.5rem !important;
+  font-size: 0.75rem !important;
+}
+
+.tech-chip--normal {
+  height: 2rem !important;
+  font-size: 0.8125rem !important;
+}
+
+.tech-chip--large {
+  height: 2.5rem !important;
+  font-size: 0.9375rem !important;
+}
+.tech-chip--large .MuiChip-label {
+  padding-inline: 1rem;
+}

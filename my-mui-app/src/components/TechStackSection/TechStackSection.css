@@ -1,0 +1,13 @@
+.tech-stack-panel {
+  padding: 1.25rem;
+}
+@media (min-width: 900px) {
+  .tech-stack-panel {
+    padding: 1.5rem;
+  }
+}
+
+.tech-stack-panel__title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}

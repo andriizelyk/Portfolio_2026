@@ -1,0 +1,114 @@
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+@media (min-width: 600px) {
+  .stats-grid {
+    flex-direction: row;
+  }
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 13.75rem;
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+.stats-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.stats-card__icon {
+  margin-bottom: 1rem;
+}
+
+.stats-card__value {
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.stats-card__label {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.stats-dialog__title {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-bottom: 1rem;
+}
+
+.stats-dialog__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.stats-dialog__label {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.stats-dialog__content {
+  padding-block: 1.5rem;
+}
+
+.stats-dialog__figure {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.stats-dialog__value {
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+/* Accent rule fading out from the figure, so the number reads as a heading for
+   the copy below instead of floating above it. */
+.stats-dialog__figure-rule {
+  flex: 1;
+  height: 0.125rem;
+  border-radius: 0.0625rem;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--color-primary-rgb), 0.45),
+    rgba(var(--color-primary-rgb), 0)
+  );
+}
+
+.stats-dialog__paragraph {
+  color: var(--color-text-primary);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Opening paragraph carries the point, so it leads on weight alone — the copy
+   stays a single colour throughout. */
+.stats-dialog__paragraph--lead {
+  font-weight: 500;
+}
+
+.stats-dialog__paragraph + .stats-dialog__paragraph {
+  margin-top: 0.875rem;
+  text-indent: 1.5rem;
+}
+
+.stats-dialog__actions {
+  padding: 0.75rem 1.5rem 1rem;
+}

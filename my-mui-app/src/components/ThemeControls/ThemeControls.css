@@ -1,0 +1,21 @@
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.theme-controls--column {
+  flex-direction: column;
+}
+
+.theme-controls__swatch {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--swatch-color);
+  box-shadow: 0 0 0.5rem var(--swatch-color);
+}
+
+.theme-controls__check {
+  margin-left: auto;
+  color: var(--color-primary);
+}

@@ -1,0 +1,21 @@
+.theme-dock {
+  display: none;
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1101;
+}
+@media (min-width: 900px) {
+  .theme-dock {
+    display: block;
+  }
+}
+
+.theme-dock__panel {
+  padding: 0.5rem;
+  border-radius: 5.25rem;
+  border: 1px solid var(--color-divider);
+  background-color: var(--color-surface-translucent);
+  backdrop-filter: blur(0.625rem);
+}

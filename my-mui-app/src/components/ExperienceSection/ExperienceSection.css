@@ -1,0 +1,105 @@
+/* The .timeline-item* blocks live in App.css — Education reuses them. */
+
+.experience-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.experience-cta__icon--up {
+  transform: rotate(-90deg);
+}
+
+/* Covers the whole card so any click opens the dialog. Sits beneath the
+   company link, which is raised above it and stays clickable on its own. */
+.timeline-item__card-trigger {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+.timeline-item__card-trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+/* Roles can carry a dozen chips, so the tag row has to share width with the
+   text column and wrap, rather than claiming its full unwrapped width. */
+.timeline-item__tags {
+  min-width: 0;
+}
+@media (min-width: 600px) {
+  .timeline-item__main {
+    flex: 1 1 55%;
+  }
+  .timeline-item__tags {
+    flex: 1 1 45%;
+    align-content: flex-start;
+    justify-content: flex-end;
+  }
+}
+
+.experience-dialog__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.experience-dialog__role {
+  font-weight: 700;
+}
+
+.experience-dialog__company {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+a.experience-dialog__company:hover {
+  text-decoration: underline;
+}
+
+.experience-dialog__years {
+  display: block;
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: 0.03125rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Reads as the lead for the bullets below: same size as them, set apart by
+   weight and the gap rather than by a different type scale. */
+.experience-dialog__description {
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Achievement bullets: the default disc sits too tight and too dim next to the
+   body copy, so the marker is an accent dot drawn in the padding instead. */
+.experience-dialog__highlights {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-dialog__highlights li {
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.7;
+}
+.experience-dialog__highlights li + li {
+  margin-top: 1rem;
+}
+.experience-dialog__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0.375rem;
+  top: 0.625rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
