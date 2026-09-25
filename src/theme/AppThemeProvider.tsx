@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { accents, type AccentKey } from './accents';
 import { buildCssVariables } from './cssVariables';
+import { withViewTransition } from '../utils/viewTransition';
 
 interface AppThemeContextValue {
   mode: PaletteMode;
@@ -39,17 +40,18 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<PaletteMode>(readStoredMode);
   const [accentKey, setAccentKeyState] = useState<AccentKey>(readStoredAccent);
 
+  // Both setters run through a view transition, so every control that changes
+  // the theme — the dock and the mobile navbar alike — cross-fades the page
+  // instead of repainting it instantly.
   const setAccentKey = (key: AccentKey) => {
-    setAccentKeyState(key);
     window.localStorage.setItem(STORAGE_ACCENT_KEY, key);
+    withViewTransition(() => setAccentKeyState(key), 'theme');
   };
 
   const toggleMode = () => {
-    setMode((prev) => {
-      const next = prev === 'dark' ? 'light' : 'dark';
-      window.localStorage.setItem(STORAGE_MODE_KEY, next);
-      return next;
-    });
+    const next = mode === 'dark' ? 'light' : 'dark';
+    window.localStorage.setItem(STORAGE_MODE_KEY, next);
+    withViewTransition(() => setMode(next), 'theme');
   };
 
   const cssVariables = useMemo(() => buildCssVariables(mode, accents[accentKey]), [mode, accentKey]);
@@ -73,7 +75,14 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
         text: { primary: cssVariables['--color-text-primary'], secondary: cssVariables['--color-text-secondary'] },
         divider: cssVariables['--color-divider'],
       },
-      shape: { borderRadius: 14 },
+      // MUI emits its own media queries from these values, so they are declared
+      // in rem to match the stylesheets — otherwise a visitor with a non-default
+      // browser font size gets JS and CSS breakpoints firing at different widths.
+      breakpoints: {
+        unit: 'rem',
+        values: { xs: 0, sm: 37.5, md: 56.25, lg: 75, xl: 96 },
+      },
+      shape: { borderRadius: '0.875rem' },
       typography: {
         fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
         h1: { fontWeight: 800 },
@@ -87,15 +96,15 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
           styleOverrides: {
             root: {
               backgroundImage: 'none',
-              backdropFilter: 'blur(10px)',
+              backdropFilter: 'blur(0.625rem)',
               backgroundColor: 'var(--color-surface-translucent)',
-              borderBottom: '1px solid var(--color-divider)',
+              borderBottom: '0.0625rem solid var(--color-divider)',
             },
           },
         },
         MuiButton: {
           styleOverrides: {
-            root: { borderRadius: 10 },
+            root: { borderRadius: '0.625rem' },
           },
           variants: [
             {
@@ -111,7 +120,7 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
         },
         MuiChip: {
           styleOverrides: {
-            root: { borderRadius: 8, fontWeight: 600, cursor: 'pointer' },
+            root: { borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer' },
           },
         },
         MuiDialog: {

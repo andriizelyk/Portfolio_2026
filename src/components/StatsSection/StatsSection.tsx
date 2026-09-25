@@ -55,7 +55,7 @@ export function StatsSection() {
         onClose={() => setSelectedIndex(null)}
         maxWidth="sm"
         fullWidth
-        slotProps={{ backdrop: { sx: { backdropFilter: 'blur(6px)' } } }}
+        slotProps={{ backdrop: { sx: { backdropFilter: 'blur(0.375rem)' } } }}
       >
         {selectedStat && SelectedIcon && (
           <>

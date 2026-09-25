@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1.5rem;
 }
-@media (min-width: 900px) {
+@media (min-width: 56.25rem) {
   .projects-grid {
     flex-direction: row;
   }

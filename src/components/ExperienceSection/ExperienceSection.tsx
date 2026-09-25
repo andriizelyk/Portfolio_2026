@@ -3,9 +3,15 @@ import { Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions }
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { TechChip } from '../TechChip/TechChip';
 import { experience, type Company } from '../../data/portfolio';
+import { withViewTransition } from '../../utils/viewTransition';
 import './ExperienceSection.css';
 
 const VISIBLE_COUNT = 3;
+
+/** Stable per-entry view-transition-name, so a card the browser sees in both
+    the before and after snapshots is tweened rather than cross-faded. */
+const transitionName = (companyName: string) =>
+  `exp-${companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
 function CompanyBadge({ company }: { company: Company }) {
   return (
@@ -56,7 +62,11 @@ export function ExperienceSection() {
           {visibleExperience.map((item, index) => {
             const isLast = index === visibleExperience.length - 1;
             return (
-              <div key={item.company.name} className="timeline-item">
+              <div
+                key={item.company.name}
+                className="timeline-item"
+                style={{ viewTransitionName: transitionName(item.company.name) }}
+              >
                 <div className="timeline-item__rail">
                   <span className="timeline-item__dot" />
                   {!isLast && <span className="timeline-item__line" />}
@@ -111,7 +121,7 @@ export function ExperienceSection() {
           <div className="experience-cta">
             <Button
               endIcon={<ArrowForwardRoundedIcon className={expanded ? 'experience-cta__icon--up' : ''} />}
-              onClick={() => setExpanded((prev) => !prev)}
+              onClick={() => withViewTransition(() => setExpanded((prev) => !prev), 'list')}
             >
               {expanded ? 'Show less' : 'Learn more'}
             </Button>
@@ -124,7 +134,7 @@ export function ExperienceSection() {
         onClose={() => setSelectedIndex(null)}
         maxWidth="sm"
         fullWidth
-        slotProps={{ backdrop: { sx: { backdropFilter: 'blur(6px)' } } }}
+        slotProps={{ backdrop: { sx: { backdropFilter: 'blur(0.375rem)' } } }}
       >
         {selectedExperience && (
           <>

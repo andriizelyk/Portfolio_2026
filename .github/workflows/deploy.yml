@@ -1,0 +1,63 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  # Lets you redeploy the current main without pushing a commit.
+  workflow_dispatch:
+
+# A second push while a deploy is running cancels the first, so S3 can never be
+# written by two builds at once.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  S3_BUCKET: www.andriizelyk.com
+  AWS_REGION: us-east-1
+  # Both distributions serve the same bucket (apex + www).
+  CLOUDFRONT_DISTRIBUTIONS: ESX964JRQEOLW E17XNBE2H2JRXN
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Vite 8 requires ^20.19 || >=22.12 — it will not run on older Node.
+          node-version: '22'
+          cache: npm
+
+      # ci, not install: builds from the committed lockfile and fails loudly if
+      # package.json and package-lock.json have drifted apart.
+      - name: Install dependencies
+        run: npm ci
+
+      # Runs `tsc -b && vite build`, so a type error fails the deploy.
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync files to S3
+        run: aws s3 sync ./dist "s3://${S3_BUCKET}" --delete
+
+      - name: Invalidate CloudFront
+        run: |
+          for id in $CLOUDFRONT_DISTRIBUTIONS; do
+            echo "Invalidating $id"
+            aws cloudfront create-invalidation --distribution-id "$id" --paths "/*"
+          done

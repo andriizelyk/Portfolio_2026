@@ -1,7 +1,7 @@
 .tech-stack-panel {
   padding: 1.25rem;
 }
-@media (min-width: 900px) {
+@media (min-width: 56.25rem) {
   .tech-stack-panel {
     padding: 1.5rem;
   }

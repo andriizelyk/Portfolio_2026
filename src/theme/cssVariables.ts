@@ -27,9 +27,9 @@ export function buildCssVariables(mode: PaletteMode, accent: AccentDefinition) {
     '--color-icon-badge-bg': alpha(accent.main, 0.14),
     '--color-chip-badge-bg': alpha(accent.main, isDark ? 0.12 : 0.08),
     '--color-dot-inactive': alpha(textPrimary, 0.2),
-    '--shadow-glow-portrait': `0 0 60px ${alpha(accent.main, isDark ? 0.25 : 0.15)}`,
-    '--shadow-glow-button': `0 0 24px ${alpha(accent.main, isDark ? 0.45 : 0.25)}`,
-    '--shadow-glow-button-hover': `0 0 32px ${alpha(accent.main, isDark ? 0.6 : 0.35)}`,
+    '--shadow-glow-portrait': `0 0 3.75rem ${alpha(accent.main, isDark ? 0.25 : 0.15)}`,
+    '--shadow-glow-button': `0 0 1.5rem ${alpha(accent.main, isDark ? 0.45 : 0.25)}`,
+    '--shadow-glow-button-hover': `0 0 2rem ${alpha(accent.main, isDark ? 0.6 : 0.35)}`,
   } as const;
 }
 
