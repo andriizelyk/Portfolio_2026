@@ -57,7 +57,10 @@ function company(name: CompanyName): Company {
 /** Profile links, defined once so the navbar and footer can never drift apart. */
 export const socialLinks = {
   github: 'https://github.com/andriizelyk',
-  linkedin: 'https://www.linkedin.com/',
+  linkedin: 'https://www.linkedin.com/in/andrii-zelyk/',
+  /** Google Form that collects contact attempts — the Contact section's CTA. */
+  contactForm:
+    'https://docs.google.com/forms/d/e/1FAIpQLSecQBVfOpRIoq3Xqa0D0ArqW2035PLGltekBeNDv9ezoIcLsg/viewform',
 };
 
 export const hero = {

@@ -1,6 +1,7 @@
 import { Typography, Button } from '@mui/material';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { socialLinks } from '../../data/portfolio';
 import './ContactSection.css';
 
 export function ContactSection() {
@@ -28,7 +29,9 @@ export function ContactSection() {
               color="primary"
               size="large"
               endIcon={<ArrowForwardRoundedIcon />}
-              href="mailto:contact@example.com"
+              href={socialLinks.contactForm}
+              target="_blank"
+              rel="noopener noreferrer"
               className="contact-panel__button"
             >
               Get In Touch
