@@ -58,6 +58,8 @@ function company(name: CompanyName): Company {
 export const socialLinks = {
   github: 'https://github.com/andriizelyk',
   linkedin: 'https://www.linkedin.com/in/andrii-zelyk/',
+  /** Resume PDF served from /public. */
+  resume: '/AndriiZelykResume.pdf',
   /** Google Form that collects contact attempts — the Contact section's CTA. */
   contactForm:
     'https://docs.google.com/forms/d/e/1FAIpQLSecQBVfOpRIoq3Xqa0D0ArqW2035PLGltekBeNDv9ezoIcLsg/viewform',

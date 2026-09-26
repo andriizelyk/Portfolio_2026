@@ -3,7 +3,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import heroImage from '/face.jpg';
-import { hero } from '../../data/portfolio';
+import { hero, socialLinks } from '../../data/portfolio';
 import { scrollToSection } from '../../utils/scroll';
 import './Hero.css';
 
@@ -38,10 +38,10 @@ export function Hero() {
                 color="primary"
                 size="large"
                 endIcon={<ArrowForwardRoundedIcon />}
-                href="#projects"
+                href="#experience"
                 onClick={(event) => {
                   event.preventDefault();
-                  scrollToSection('projects');
+                  scrollToSection('experience');
                 }}
               >
                 View My Work
@@ -51,7 +51,8 @@ export function Hero() {
                 size="large"
                 color="inherit"
                 endIcon={<DownloadRoundedIcon />}
-                href="/resume.pdf"
+                href={socialLinks.resume}
+                download
               >
                 Download CV
               </Button>
