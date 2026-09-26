@@ -4,7 +4,9 @@ import { Navbar } from './components/Navbar/Navbar';
 import { ThemeDock } from './components/ThemeDock/ThemeDock';
 import { Hero } from './components/Hero/Hero';
 import { StatsSection } from './components/StatsSection/StatsSection';
-import { ProjectsSection } from './components/ProjectsSection/ProjectsSection';
+// Projects section is hidden for now — restore by uncommenting this import, the
+// <ProjectsSection /> below, and the nav link in data/portfolio.ts.
+// import { ProjectsSection } from './components/ProjectsSection/ProjectsSection';
 import { ExperienceSection } from './components/ExperienceSection/ExperienceSection';
 import { EducationSection } from './components/EducationSection/EducationSection';
 import { TestimonialsSection } from './components/TestimonialsSection/TestimonialsSection';
@@ -20,7 +22,7 @@ function App() {
         <ThemeDock />
         <Hero />
         <StatsSection />
-        <ProjectsSection />
+        {/* <ProjectsSection /> */}
         <ExperienceSection />
         <EducationSection />
         <TestimonialsSection />

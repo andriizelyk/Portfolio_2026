@@ -410,7 +410,8 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
-  { label: 'Projects', href: '#projects' },
+  // Hidden while the Projects section is off the page (see App.tsx).
+  // { label: 'Projects', href: '#projects' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
